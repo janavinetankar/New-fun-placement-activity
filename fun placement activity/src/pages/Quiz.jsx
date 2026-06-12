@@ -20,24 +20,42 @@ function Quiz() {
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [score, setScore] = useState(0);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
- const [quizCompleted, setQuizCompleted] = useState(false);
+  const nextQuestion = () => {
+    if (selectedOption === questions[currentQuestion].answer) {
+      setScore(score + 1);
+    }
 
-const nextQuestion = () => {
-  if (currentQuestion < questions.length - 1) {
-    setCurrentQuestion(currentQuestion + 1);
-  } else {
-    setQuizCompleted(true);
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedOption("");
+    } else {
+      setQuizCompleted(true);
+    }
+  };
+
+  const restartQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedOption("");
+    setScore(0);
+    setQuizCompleted(false);
+  };
+
+  if (quizCompleted) {
+    return (
+      <div style={{ padding: "30px", textAlign: "center" }}>
+        <h1>🎉 Quiz Completed!</h1>
+        <h2>Your Score: {score}/{questions.length}</h2>
+
+        <button onClick={restartQuiz}>
+          Restart Quiz
+        </button>
+      </div>
+    );
   }
-};
-if (quizCompleted) {
-  return (
-    <div style={{ padding: "30px" }}>
-      <h1>🎉 Quiz Completed!</h1>
-      <h2>Congratulations!</h2>
-    </div>
-  );
-}
 
   return (
     <div style={{ padding: "30px" }}>
@@ -47,14 +65,24 @@ if (quizCompleted) {
 
       {questions[currentQuestion].options.map((option, index) => (
         <div key={index}>
-          <input type="radio" name="option" />
-          {option}
+          <label>
+            <input
+              type="radio"
+              name="option"
+              value={option}
+              checked={selectedOption === option}
+              onChange={(e) => setSelectedOption(e.target.value)}
+            />
+            {option}
+          </label>
         </div>
       ))}
 
       <br />
 
-      <button onClick={nextQuestion}>Next</button>
+      <button onClick={nextQuestion}>
+        Next
+      </button>
     </div>
   );
 }
