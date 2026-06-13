@@ -1,0 +1,47 @@
+.resume-container {
+  padding: 30px;
+  min-height: 100vh;
+  background: #f4f7fc;
+}
+
+.resume-title {
+  text-align: center;
+  color: #4a6cf7;
+  margin-bottom: 30px;
+}
+
+.resume-layout {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.form-section,
+.preview-section {
+  flex: 1;
+  min-width: 350px;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2,
+.preview-section h2 {
+  color: #4a6cf7;
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.preview-section p {
+  margin: 12px 0;
+  font-size: 16px;
+}

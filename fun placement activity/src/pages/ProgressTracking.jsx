@@ -1,26 +1,33 @@
+import "../style/ProgressTracking.css";
+
 function ProgressTracking() {
+  const modules = [
+    { name: "Quiz Module", progress: 100 },
+    { name: "Mock Interview", progress: 100 },
+    { name: "Daily Challenge", progress: 80 },
+    { name: "Resume Builder", progress: 90 },
+  ];
+
+
   return (
-    <div style={{ padding: "30px" }}>
-      <h1>📈 Progress Tracking</h1>
+    <div className="progress-container">
+      <h1 className="progress-title">📈 Progress Tracking</h1>
 
-      <div>
-        <h3>Quiz Module</h3>
-        <p>Status: Completed ✅</p>
-      </div>
+      <div className="progress-grid">
+        {modules.map((module, index) => (
+          <div className="progress-card" key={index}>
+            <h3>{module.name}</h3>
 
-      <div>
-        <h3>Mock Interview</h3>
-        <p>Status: Completed ✅</p>
-      </div>
+            <p>{module.progress}% Completed</p>
 
-      <div>
-        <h3>Daily Challenge</h3>
-        <p>Status: Completed ✅</p>
-      </div>
-
-      <div>
-        <h3>Resume Builder</h3>
-        <p>Status: Completed ✅</p>
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${module.progress}%` }}
+              ></div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

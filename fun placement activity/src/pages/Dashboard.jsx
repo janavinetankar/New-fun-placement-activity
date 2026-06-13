@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
   const navigate = useNavigate();
 
+
+  
+
   const features = [
     { title: "Quiz Module", icon: "📚", path: "/quiz" },
     { title: "Mock Interview", icon: "🎤", path: "/mock-interview" },
@@ -19,6 +22,23 @@ function Dashboard() {
     <div className="dashboard">
       <h1>Fun Placement Activity</h1>
       <p>Welcome Back, Student 👋</p>
+
+      <div className="stats">
+  <div className="stat-card">
+    <h2>8</h2>
+    <p>Total Modules</p>
+  </div>
+
+  <div className="stat-card">
+    <h2>4</h2>
+    <p>Completed</p>
+  </div>
+
+  <div className="stat-card">
+    <h2>50%</h2>
+    <p>Progress</p>
+  </div>
+</div>
 
       <div className="card-container">
         {features.map((feature, index) => (
